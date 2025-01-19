@@ -192,18 +192,21 @@ export default function Context({ children }) {
 
 
   let increaseCartqty = (v) => {
-     cartitems.map((value) => {
+    let finalData= cartitems.map((value) => {
       if (value.id == v.id) {
         if (value.qty <= 4) {
           value.qty = value.qty + 1;
         }
 
       }
+      return value;
     })
-    setcartitems(cartitems)
+    
+    setcartitems(finalData)
     let newData = JSON.parse(localStorage.getItem('logedin')) ?? {};
     newData.cart = [...cartitems]
     localStorage.setItem('logedin', JSON.stringify(newData))
+    
     signup.map((v, i) => {
       if (v.id == newData.id) {
         signup[i] = newData
@@ -215,15 +218,16 @@ export default function Context({ children }) {
     console.log(cartitems)
 }
   let decreaseCartqty = (v) => {
-    cartitems.map((value) => {
+  let finalcart =  cartitems.map((value) => {
       if (value.id == v.id) {
         if (value.qty > 1) {
           value.qty = value.qty - 1;
         }
 
       }
+      return value
     })
-    setcartitems(cartitems)
+    setcartitems(finalcart)
     let newData = JSON.parse(localStorage.getItem('logedin')) ?? {};
     newData.cart = [...cartitems]
     localStorage.setItem('logedin', JSON.stringify(newData))
