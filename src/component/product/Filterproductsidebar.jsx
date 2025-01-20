@@ -168,11 +168,11 @@ export default function Filterproductsidebar({ Categories,
             From: "translate-x-0"
             To: "translate-x-full"
         --> */}
-          <div className="relative top-[125px] ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
-            <div className="flex items-center justify-between px-4">
+          <div className="relative top-[75px] p-2 rounded-l-lg   ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+            <div className="flex items-center justify-between -">
               <h2 className=" text-[25px] font-medium text-gray-900">Filters</h2>
               <button type="button" onClick={() => setmobilemenu(false)} className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400">
-                <span className="sr-only">Close menu</span>
+                {/* <span className="sr-only">Close menu</span> */}
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -181,24 +181,24 @@ export default function Filterproductsidebar({ Categories,
 
             {/* <!-- Filters --> */}
             <form className="">
-              
+
 
               <div className="border-b  border-gray-200 py-6">
                 <h3 className="-my-3 flow-root">
                   {/* <!-- Expand/collapse section button --> */}
                   <button type="button" onClick={() => closesort()} className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false">
-                    <span className="font-medium text-gray-900">Sort</span>
+                    <span className="font-medium text-[19px] text-gray-900">Sort</span>
                     <span className="ml-6 flex items-center">
                       {/* <!-- Expand icon, show/hide based on section open state. --> */}
                       {
                         opensort
                           ?
-                          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-6 text-[19px]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                           </svg>
                           :
 
-                          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-6 text-[19px]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fillRule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clipRule="evenodd" />
                           </svg>
                       }
@@ -293,16 +293,16 @@ export default function Filterproductsidebar({ Categories,
                 <h3 className="-my-3 flow-root">
                   {/* <!-- Expand/collapse section button --> */}
                   <button type="button" onClick={() => closebrand()} className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-1" aria-expanded="false">
-                    <span className="font-medium text-gray-900">Brands</span>
+                    <span className="font-medium text-[19px]   text-gray-900">Brands</span>
                     <span className="ml-6 flex items-center">
                       {
                         openbrand
                           ?
-                          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                           </svg>
                           :
-                          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fillRule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clipRule="evenodd" />
                           </svg>
                       }
@@ -335,18 +335,18 @@ export default function Filterproductsidebar({ Categories,
                 <h3 className="-my-3 flow-root">
                   {/* <!-- Expand/collapse section button --> */}
                   <button type="button" onClick={() => closeprice()} className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-2" aria-expanded="false">
-                    <span className="font-medium text-gray-900">Price</span>
+                    <span className="font-medium text-[19px] text-gray-900">Price</span>
                     <span className="ml-6 flex items-center">
                       {/* <!-- Expand icon, show/hide based on section open state. --> */}
                       {
                         openprice
                           ?
-                          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                           </svg>
                           :
 
-                          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fillRule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clipRule="evenodd" />
                           </svg>
                       }
@@ -380,18 +380,18 @@ export default function Filterproductsidebar({ Categories,
                 <h3 className="-my-3 flow-root">
                   {/* <!-- Expand/collapse section button --> */}
                   <button type="button" onClick={() => closerating()} className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-2" aria-expanded="false">
-                    <span className="font-medium text-gray-900">Rating</span>
+                    <span className="font-medium text-[19px] text-gray-900">Rating</span>
                     <span className="ml-6 flex items-center">
                       {/* <!-- Expand icon, show/hide based on section open state. --> */}
                       {
                         openrating
                           ?
-                          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-6 " viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                           </svg>
                           :
 
-                          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-6 " viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fillRule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clipRule="evenodd" />
                           </svg>
                       }
@@ -425,18 +425,18 @@ export default function Filterproductsidebar({ Categories,
                 <h3 className="-my-3 flow-root">
                   {/* <!-- Expand/collapse section button --> */}
                   <button type="button" onClick={() => closedis()} className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-2" aria-expanded="false">
-                    <span className="font-medium text-gray-900">DISCOUNT RANGE</span>
+                    <span className="font-medium text-[19px] text-gray-900">DISCOUNT RANGE</span>
                     <span className="ml-6 flex items-center">
                       {/* <!-- Expand icon, show/hide based on section open state. --> */}
                       {
                         opendis
                           ?
-                          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-6 text-[19px]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                           </svg>
                           :
 
-                          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-6 text-[19px]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fillRule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clipRule="evenodd" />
                           </svg>
                       }
@@ -462,8 +462,8 @@ export default function Filterproductsidebar({ Categories,
                       <input id="filter-size-3" name="size" value="4" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
                       <label htmlFor="filter-size-3" className="ml-3 text-sm text-gray-600">20% and above</label>
                     </div>
-                    
-                    </div>
+
+                  </div>
                 </div>
               </div>
             </form>
@@ -475,7 +475,7 @@ export default function Filterproductsidebar({ Categories,
 
 
         <section aria-labelledby="products-heading" className="p-2  border border-[2px ] basis-[30%] pt-6">
-          <h2 id="products-heading" className="sr-only">Products</h2>
+          {/* <h2 id="products-heading" className="sr-only">Products</h2> */}
 
           <div className=" ">
             {/* <!-- Filters --> */}
@@ -761,8 +761,8 @@ export default function Filterproductsidebar({ Categories,
                       <input id="filter-size-3" name="size" value="4" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
                       <label htmlFor="filter-size-3" className="ml-3 text-sm text-gray-600">20% and above</label>
                     </div>
-                    
-                    </div>
+
+                  </div>
                 </div>
               </div>
             </form>

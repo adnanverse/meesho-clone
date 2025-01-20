@@ -191,7 +191,7 @@ export default function Header() {
                 </nav>
                 
             </div>
-            <div className='px-4 pt-1 pb-2'>
+            <div className='px-4  bg-white pt-1 pb-2'>
             <div className='laptop:hidden flex  border-[#8B8BA3] w-100% px-2 font-normal py-[8.2px] border largelaptop:rounded rounded-[13px]  items-center' >
                         <div className='text-[23px] text-[#8B8BA3] font-bold'><CiSearch className='font-black' /></div>
                         <div className='w-[80%]'>
