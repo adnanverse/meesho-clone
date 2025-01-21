@@ -26,13 +26,10 @@ export default function ProductView() {
     axios.get(`https://wscubetech.co/ecommerce-api/productdetalis.php?id=${params.id}`)
       .then(function (response) {
         // handle succes
-        // console.log(response.data.product)
+       
         setProductViewData(response.data.product);
-        // console.log(ProductViewData.map)
         setimages(response.data.product.multiple_images)
         setreviews(response.data.product.reviews)
-        // console.log(response.data.reviews)
-        // setimagemul(ProductViewData.images)
 
 
 
@@ -42,7 +39,7 @@ export default function ProductView() {
         // alert("error")
         console.log(error);
       })
-  }, [imagess])
+  }, [])
 
 
   let showimg = (e) => {
@@ -50,12 +47,9 @@ export default function ProductView() {
   }
   useEffect(() => {
     
-console.log(ProductViewData)
     axios.get(`https://wscubetech.co/ecommerce-api/products.php?limit=28`)
 
       .then(function (response) {
-        // handle succes
-        // console.log(response.data.data)
         setproducts(response.data.data);
 
         // settotalpages(response.data.toal_pages)
@@ -76,7 +70,6 @@ console.log(ProductViewData)
       return v;
      } 
     })
-    console.log(allData)
     setsimilarproduct(allData)
 
   },[])

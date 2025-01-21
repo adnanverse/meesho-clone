@@ -9,18 +9,12 @@ import { Commoncontext } from "../context/Context.jsx";
 
 export default function Productcard({ v, addtocart }) {
   let { heart, wish, setheart, cartitems } = useContext(Commoncontext)
-  // console.log(v.multiple_images)
   var checkwishin = [];
   
   if(wish!=undefined){
-  // console.log(wish)
   checkwishin = wish.filter((items) => items.id == v.id)
   }
-  // useEffect(()=>{
-  //   console.log('check wish',checkwishin)
-  // },[])
-  // let checkcartin = cartitems.filter((items)=> items.id==v.id)
-  //
+  
   return (
     <>
       <div className="laptop:w-[220px] smallmob:w-[50%] border largemob:mt-6 p-3 largemob:rounded-lg ">

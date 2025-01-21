@@ -3,7 +3,7 @@ import { Commoncontext } from './context/Context'
 
 export default function CartCard({v,deleteCart}) {
     let {increaseCartqty,decreaseCartqty}= useContext(Commoncontext)
-    console.log(v)
+    
   return (
     <div class="flex gap-4 bg-white px-4 py-6 rounded-md shadow-[0_2px_12px_-3px_rgba(6,81,237,0.3)]">
                         <div class="flex gap-4">

@@ -21,21 +21,18 @@ export default function Filterproductsidebar({ Categories,
 
   // b is a function that store a slug of brand------------------------------------------------------------>>>>>
   let b = (slug) => {
-    console.log(slug)
     if (BRAND.includes(slug)) {
       var category = BRAND.filter((v, i) => {
         if (v != slug) {
           return v;
         }
       })
-      console.log(category)
       SETBRAND(category)
     }
     else {
       BRAND.push(slug)
       // SETBRAND(BRAND)
     }
-    console.log(BRAND)
     setfilbrand(!filbrand);
   }
   // cc is a function that store a slug of product------------------------------------------------------------>>>>>
@@ -48,7 +45,6 @@ export default function Filterproductsidebar({ Categories,
           return v; //value store in category variable 
         }
       })
-      console.log(category)
       setcat(category)
     }
     else {
@@ -61,7 +57,6 @@ export default function Filterproductsidebar({ Categories,
 
   }
   let pricerange = (c) => {
-    console.log(c.target.value)
     if (c.target.value == '1') {
       let a = [10, 250];
       setprice(a)

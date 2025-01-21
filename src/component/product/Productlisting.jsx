@@ -113,12 +113,12 @@ export default function Productlisting() {
     }, [])
 
 
-    // console.log(wish)
+    console.log(wish)
 
     return (
         <>
             <div className="bg-white">
-                <div className={` ${(wish==undefined) ? 'hidden' : 'tablet:block'} hidden  fixed top-[45%] rounded-full border shadow py-3 px-2 right-6`}>
+                <div className={` ${(wish!='') ? 'tablet:block' : ' tablet:hidden'}   hidden fixed top-[45%] rounded-full border shadow py-3 px-2 right-6`}>
                     <Link to={'/Wishlist'}>
                 <IoMdHeart className='text-[red] mx-auto text-[30px]'/>
                 <p className='text-[20-px] font-semibold'>Wishlist</p>

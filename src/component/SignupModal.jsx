@@ -23,7 +23,6 @@ let letsignin = (event) => {
     if (v.email == objgsignup.email) {
       return v;
     }
-    console.log()
 
 
   })
@@ -37,14 +36,10 @@ let letsignin = (event) => {
     setuserlogedin(objgsignup)
     setsignup(signup)
     localStorage.setItem('signup', JSON.stringify(signup))
-    // navigation('/productlisting')
     setpopup(false)
-    // console.log(signup)
-    // navigation('/productlisting')
   }
   else {
     alert('email already used')
-    // console.log(signup)
   }
 
 

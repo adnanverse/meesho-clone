@@ -14,7 +14,6 @@ export default function Context({ children }) {
   let wishdata = userlogedin.wish ?? []
   let [wish, setwish] = useState(wishdata)
   let [cartitems, setcartitems] = useState(userlogedin.cart)
-  // console.log(userlogedin)
 
   let addtocart = (product) => {
     if (userlogedin != '') {
@@ -116,14 +115,11 @@ export default function Context({ children }) {
         })
       }
     })
-    console.log(id)
     }
 
 
 
   let setheart = (v) => {
-    // setlaldil(!laldil)
-    console.log(wish)
     var data = [];
     if (wish != undefined) {
     data = wish.filter((value) => {
@@ -149,7 +145,6 @@ export default function Context({ children }) {
       userlogedin.wish = [wishitem, ...wish];
       setuserlogedin(userlogedin)
       localStorage.setItem('logedin', JSON.stringify(userlogedin))
-      console.log('if no data ', userlogedin)
 
       signup.map((v, i) => {
         if (v.id == userlogedin.id) {
@@ -170,7 +165,6 @@ export default function Context({ children }) {
           userlogedin.wish = finalwish;
           localStorage.setItem('logedin', JSON.stringify(userlogedin))
           setwish(finalwish)
-          console.log('else same data ', userlogedin)
           signup.map((v, i) => {
             if (v.id == userlogedin.id) {
               signup[i] = userlogedin
@@ -215,7 +209,6 @@ export default function Context({ children }) {
         localStorage.setItem('signup', JSON.stringify(final))
       }
     })
-    console.log(cartitems)
 }
   let decreaseCartqty = (v) => {
   let finalcart =  cartitems.map((value) => {
@@ -239,7 +232,6 @@ export default function Context({ children }) {
         localStorage.setItem('signup', JSON.stringify(final))
       }
     })
-    console.log(cartitems)
   }
   let allitems = {
     cartitems, setcartitems, addtocart, deleteCart, wish

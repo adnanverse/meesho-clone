@@ -6,23 +6,17 @@ import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 export default function Productfilter({ products, setclears, clear, mobilemenu, setmobilemenu, sort, totalpages, setSORT, pagecount, setpagecount }) {
-  // console.log(sort)
-  // let gg=()=>{
-  //     setclears(!clear)
-  // }\
+  
   let { addtocart } = useContext(Commoncontext)
   let openmenu = () => [
     setmobilemenu(true)
   ]
   let next = () => {
     pagecount++;
-    console.log(pagecount)
     setpagecount(pagecount)
-    // console.log(totalpages)
   }
   let previous = () => {
     pagecount--;
-    console.log(pagecount)
     setpagecount(pagecount)
   }
   return (

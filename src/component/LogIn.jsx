@@ -10,40 +10,26 @@ export default function LogIn() {
   let navigation = useNavigate()
 let submithandle =(event)=>{
 event.preventDefault();
-console.log(event.target.email.value)
 let data = signup.filter((v,i)=>{
   if(v.email==event.target.email.value){
     return v;
   }
 })
-// console.log(signup)
-console.log(data)
 
-// console.log(userlogedin)
 localStorage.setItem('logedin',JSON.stringify(data[0]))
 setuserlogedin(data[0])
 setcartitems(data[0].cart)
 navigation('/productlisting')
 }
 let clearlogin = () => {
-  console.log(cartitems)
   // setcartitems([])
 
   localStorage.setItem('logedin', JSON.stringify([]))
   setuserlogedin([])
   setwish([])
-  // localStorage.clear();
-
-  console.log(userlogedin)
-  // console.log(userlogedin)
 
 }
-// console.log(userlogedin[0].cart)
-// console.log(cartitems)
-// userlogedin[0].cart=cartitems
-// console.log(userlogedin[0].cart)
-// setuserlogedin[userlogedin]
-// console.log(userlogedin)
+
   return (
     <><div className='bg-[#FDECED]'>
       <Header />

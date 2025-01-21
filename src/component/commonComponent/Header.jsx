@@ -18,7 +18,6 @@ import { Commoncontext } from '../context/Context.jsx';
 export default function Header() {
     let { setpopup,cartitems, userlogedin, setuserlogedin, setcartitems, setwish } = useContext(Commoncontext);
     let clearlogin = () => {
-        console.log(cartitems)
         // setcartitems([])
 
         localStorage.setItem('logedin', JSON.stringify([]))
@@ -26,14 +25,12 @@ export default function Header() {
         setwish([])
         // localStorage.clear();
 
-        console.log(userlogedin)
-        // console.log(userlogedin)
+       
 
     }
     let pleaselogin = () => {
         setpopup(true)
     }
-    // console.log(userlogedin)
     return (
         <>
             <div className=' max-w-[100%]  z-[9999] bg-[white] sticky px-4 top-0 '>

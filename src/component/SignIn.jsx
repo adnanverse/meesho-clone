@@ -22,10 +22,7 @@ export default function SignIn() {
       if (v.email == objgsignup.email) {
         return v;
       }
-      console.log()
-
-
-    })
+      })
   
 
   
@@ -37,20 +34,16 @@ export default function SignIn() {
       setsignup(signup)
       localStorage.setItem('signup', JSON.stringify(signup))
       navigation('/productlisting')
-      // console.log(signup)
-      // navigation('/productlisting')
     }
     else {
       alert('email already used')
-      // console.log(signup)
     }
 
 
     event.target.reset();
     
   } 
-  console.log(cartitems)
-// console.log(cartitems)
+  
   return (
     <>
 
