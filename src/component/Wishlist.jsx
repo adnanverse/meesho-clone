@@ -6,7 +6,7 @@ import { Commoncontext } from './context/Context.jsx'
 export default function Wishlist() {
   let { addwishlist, wish } = useContext(Commoncontext)
   return (
-    <div className='flex  gap-5 flex-wrap'>
+    <div className='flex  justify-center laptop:gap-5 flex-wrap'>
       {
         wish.map((v, i) => {
           return (

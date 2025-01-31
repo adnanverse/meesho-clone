@@ -35,6 +35,8 @@ export default function Filterproductsidebar({ Categories,
     }
     setfilbrand(!filbrand);
   }
+
+
   // cc is a function that store a slug of product------------------------------------------------------------>>>>>
   let cc = (slug) => {
     ///if cat contain same slug that cc function have ---------------------------------------------------------->>>>
@@ -56,6 +58,8 @@ export default function Filterproductsidebar({ Categories,
     setLoader(true);
 
   }
+
+
   let pricerange = (c) => {
     if (c.target.value == '1') {
       let a = [10, 250];
@@ -79,6 +83,8 @@ export default function Filterproductsidebar({ Categories,
     }
     //  settrueprice(!trueprice)
   }
+
+
   let dis = (d) => {
     if (d.target.value == '1') {
       let e = [5, 10];
@@ -139,7 +145,7 @@ export default function Filterproductsidebar({ Categories,
 
       Off-canvas filters for mobile, show/hide based on off-canvas filters state.
     --> */}
-      <div className={`relative z-40 ${mobilemenu ? '' : 'hidden'}  `} role="dialog" aria-modal="true">
+      <div className={`relative  ${(mobilemenu == true) ? " z-[9999] " : "hidden"} inset-0 ease-in-out  duration-500`} role="dialog" aria-modal="true">
         {/* <!--
         Off-canvas menu backdrop, show/hide based on off-canvas menu state.
 
@@ -150,7 +156,7 @@ export default function Filterproductsidebar({ Categories,
           From: "opacity-100"
           To: "opacity-0"
       --> */}
-        <div className="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
+        <div className={`fixed ${(mobilemenu==true) ? 'opacity-100' : 'opacity-0'} inset-0 ease-in-out delay-1000 duration-500  bg-gray-500/75 transition-opacity`} aria-hidden="true"></div>
 
         <div className="fixed inset-0 z-40 flex">
           {/* <!--
@@ -163,7 +169,7 @@ export default function Filterproductsidebar({ Categories,
             From: "translate-x-0"
             To: "translate-x-full"
         --> */}
-          <div className="relative top-[75px] p-2 rounded-l-lg   ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+          <div className={`relative top-0 transform transition delay-1000 ease-in-out duration-500  ${mobilemenu ? 'translate-x-0 ' : 'translate-x-full'} p-2 rounded-l-lg ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl`}>
             <div className="flex items-center justify-between -">
               <h2 className=" text-[25px] font-medium text-gray-900">Filters</h2>
               <button type="button" onClick={() => setmobilemenu(false)} className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400">

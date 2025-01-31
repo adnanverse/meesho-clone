@@ -72,7 +72,7 @@ export default function Productfilter({ products, setclears, clear, mobilemenu, 
           <div className="flex justify-center laptop:gap-5 flex-wrap">
             {
               products.map((v, i) => {
-                // aa(v)
+             
                 return (
                   <Productcard v={v} addtocart={addtocart} key={i} />
                 )

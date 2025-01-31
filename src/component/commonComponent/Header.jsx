@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import logo from '../../assets/images/meeshoLogo.svg'
 import playstore from '../../assets/images/playstore-icon-big.png'
 import appstore from '../../assets/images/appstore-icon-big.png'
@@ -14,9 +14,13 @@ import MegaMenu from './MegaMenu';
 import { Link } from 'react-router-dom';
 import categories from './megamenuInnercontent'
 import { Commoncontext } from '../context/Context.jsx';
+import MobileMegaMenu from './MobileMegaMenu/MobileMegaMenu.jsx';
 // import { Commoncontext } from '../context/context';
 export default function Header() {
     let { setpopup,cartitems, userlogedin, setuserlogedin, setcartitems, setwish } = useContext(Commoncontext);
+
+    let [mobilemenu,setmobilemenu]=useState(false)
+
     let clearlogin = () => {
         // setcartitems([])
 
@@ -33,14 +37,17 @@ export default function Header() {
     }
     return (
         <>
+        <MobileMegaMenu mobilemenu={mobilemenu}/>
             <div className=' max-w-[100%]  z-[9999] bg-[white] sticky px-4 top-0 '>
                 <header className='max-w-[1330px] bg-[white] largelaptop:gap-0  flex m-auto largelaptop:px-0  laptop:items-center smallmob:flex-col laptop:flex-row tablet:justify-between mx-auto ' >
 
                     <figure className='flex justify-between laptop:static sticky  top-0 laptop:py-0 py-5'>
                         <div className='flex'>
-                            <Link to={'/productlisting'} >
-                                <FiMenu className='laptop:hidden me-4  text-[24px]' />
-                            </Link>
+                           
+                                <FiMenu 
+                                // onClick={()=>setmobilemenu(true)}
+                                 className='laptop:hidden me-4  text-[24px]' />
+                            
 
                             <Link to={'/'}><img src={logo} className='laptop:w-[156px] w-[87px] laptop:h-9 h-5' alt="" /></Link>
 
