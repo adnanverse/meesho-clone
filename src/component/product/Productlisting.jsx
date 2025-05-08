@@ -87,7 +87,7 @@ export default function Productlisting() {
             .then(function (response) {
                 // handle succes
                 setproducts(response.data.data);
-                settotalpages(response.data.toal_pages)
+                settotalpages(response.data.total_pages)
 
                 // setLoader(false)
 
@@ -113,7 +113,7 @@ export default function Productlisting() {
     }, [])
 
 
-    console.log(wish)
+
 
     return (
         <>
@@ -124,7 +124,7 @@ export default function Productlisting() {
                 <p className='text-[20-px] font-semibold'>Wishlist</p>
                 </Link>
                 </div>
-                <SignupModal/>
+               
                     
                 <div className='flex max-w-[1350px] laptop:gap-[20px] mx-[auto]'>
                     <Filterproductsidebar

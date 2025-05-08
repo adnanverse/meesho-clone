@@ -15,11 +15,13 @@ import { Link } from 'react-router-dom';
 import categories from './megamenuInnercontent'
 import { Commoncontext } from '../context/Context.jsx';
 import MobileMegaMenu from './MobileMegaMenu/MobileMegaMenu.jsx';
-// import { Commoncontext } from '../context/context';
+import SignupModal from '../SignupModal.jsx';
+import { ToastContainer } from 'react-toastify';
 export default function Header() {
-    let { setpopup,cartitems, userlogedin, setuserlogedin, setcartitems, setwish } = useContext(Commoncontext);
 
-    let [mobilemenu,setmobilemenu]=useState(false)
+    let { setpopup, cartitems, userlogedin, setuserlogedin, setcartitems, setwish } = useContext(Commoncontext);
+
+    let [mobilemenu, setmobilemenu] = useState(false)
 
     let clearlogin = () => {
         // setcartitems([])
@@ -29,25 +31,28 @@ export default function Header() {
         setwish([])
         // localStorage.clear();
 
-       
+
 
     }
     let pleaselogin = () => {
+        
         setpopup(true)
     }
     return (
         <>
-        <MobileMegaMenu mobilemenu={mobilemenu}/>
+        <ToastContainer className={'z-[99999]'}/>
+            <SignupModal/>
+            <MobileMegaMenu mobilemenu={mobilemenu} />
             <div className=' max-w-[100%]  z-[9999] bg-[white] sticky px-4 top-0 '>
                 <header className='max-w-[1330px] bg-[white] largelaptop:gap-0  flex m-auto largelaptop:px-0  laptop:items-center smallmob:flex-col laptop:flex-row tablet:justify-between mx-auto ' >
 
                     <figure className='flex justify-between laptop:static sticky  top-0 laptop:py-0 py-5'>
                         <div className='flex'>
-                           
-                                <FiMenu 
+
+                            <FiMenu
                                 // onClick={()=>setmobilemenu(true)}
-                                 className='laptop:hidden me-4  text-[24px]' />
-                            
+                                className='laptop:hidden me-4  text-[24px]' />
+
 
                             <Link to={'/'}><img src={logo} className='laptop:w-[156px] w-[87px] laptop:h-9 h-5' alt="" /></Link>
 
@@ -56,15 +61,15 @@ export default function Header() {
                             <div> <Link to={'/Wishlist'}><FcLike /></Link> </div>
                             <div className='text-[#C53EAD] relative pt-1 text-[20px]'>
                                 <Link to={'/cart'}>
-                                
-                                <FaCartShopping />
-                                {
-                                    (userlogedin.length == 0)
-                                        ?
-                                        ''
-                                        :
-                                        <div className='absolute bottom-[15px] text-[10px] rounded-[50%] left-[15px] py-1 px-2 text-white bg-[green]'>{cartitems.length}</div>
-                                }</Link>
+
+                                    <FaCartShopping />
+                                    {
+                                        (userlogedin.length == 0)
+                                            ?
+                                            ''
+                                            :
+                                            <div className='absolute bottom-[15px] text-[10px] rounded-[50%] left-[15px] py-1 px-2 text-white bg-[green]'>{cartitems.length}</div>
+                                    }</Link>
 
                             </div>
                         </div>
@@ -147,6 +152,7 @@ export default function Header() {
 
                             </li>
                             <li className='h-[100%] py-4 flex items-center '>
+
                                 {
                                     (userlogedin.length == 0)
 
@@ -173,7 +179,6 @@ export default function Header() {
 
                             </li>
 
-
                         </ul>
                     </nav>
 
@@ -193,17 +198,17 @@ export default function Header() {
 
                     </ul>
                 </nav>
-                
+
             </div>
             <div className='px-4  bg-white pt-1 pb-2'>
-            <div className='laptop:hidden flex  border-[#8B8BA3] w-100% px-2 font-normal py-[8.2px] border largelaptop:rounded rounded-[13px]  items-center' >
-                        <div className='text-[23px] text-[#8B8BA3] font-bold'><CiSearch className='font-black' /></div>
-                        <div className='w-[80%]'>
-                            <input type="text" placeholder='Try Saree,Kurti or Search by Product Code' className='outline-none rounded laptop:w-[250px] smallmob:w-[100%]  largelaptop:w-[358px] px-1' />
-                        </div>
+                <div className='laptop:hidden flex  border-[#8B8BA3] w-100% px-2 font-normal py-[8.2px] border largelaptop:rounded rounded-[13px]  items-center' >
+                    <div className='text-[23px] text-[#8B8BA3] font-bold'><CiSearch className='font-black' /></div>
+                    <div className='w-[80%]'>
+                        <input type="text" placeholder='Try Saree,Kurti or Search by Product Code' className='outline-none rounded laptop:w-[250px] smallmob:w-[100%]  largelaptop:w-[358px] px-1' />
                     </div>
+                </div>
             </div>
-            
+
         </>
     )
 }

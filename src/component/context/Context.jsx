@@ -120,7 +120,11 @@ export default function Context({ children }) {
 
 
   let setheart = (v) => {
+    
+    if (userlogedin != '') {
+
     var data = [];
+
     if (wish != undefined) {
     data = wish.filter((value) => {
         if (value.id == v.id) {
@@ -179,7 +183,10 @@ export default function Context({ children }) {
 
     }
 
-
+  }
+  else{
+    setpopup(true)
+  }
 
   }
 
@@ -210,6 +217,8 @@ export default function Context({ children }) {
       }
     })
 }
+
+
   let decreaseCartqty = (v) => {
   let finalcart =  cartitems.map((value) => {
       if (value.id == v.id) {
@@ -233,6 +242,8 @@ export default function Context({ children }) {
       }
     })
   }
+
+
   let allitems = {
     cartitems, setcartitems, addtocart, deleteCart, wish
     , setheart, setwish,

@@ -2,13 +2,15 @@ import React, { useContext } from 'react'
 import { RxCross1 } from "react-icons/rx";
 import { Commoncontext } from './context/Context';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 export default function SignupModal() {
 let {popupsignup,setpopup,signup, setsignup,cartitems,setcartitems,setuserlogedin }=useContext(Commoncontext)
 let closepopup =()=>{
   setpopup(false)
 }
 let letsignin = (event) => {
-  setcartitems([])
+  if(event.target.uname.value != '' && event.target.email.value != '' &&  event.target.password.value != ''){
+ setcartitems([])
 
   event.preventDefault()
   let objgsignup = {
@@ -23,6 +25,7 @@ let letsignin = (event) => {
     if (v.email == objgsignup.email) {
       return v;
     }
+
 
 
   })
@@ -44,6 +47,10 @@ let letsignin = (event) => {
 
 
   event.target.reset();
+}else{
+  event.preventDefault()
+toast.error("fill form correctly")
+}
   
 } 
   return (
@@ -106,7 +113,7 @@ let letsignin = (event) => {
         </button>
         <p class="flex justify-center mt-6 text-sm text-slate-600">
           already  have an account?
-          <Link to={'/login'} class="ml-1 text-sm font-semibold text-slate-700 underline">
+          <Link to={'/login'} onClick={()=>setpopup(false)} class="ml-1 text-sm font-semibold text-slate-700 underline">
             Log in
           </Link>
         </p>

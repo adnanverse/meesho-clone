@@ -156,7 +156,7 @@ export default function Filterproductsidebar({ Categories,
           From: "opacity-100"
           To: "opacity-0"
       --> */}
-        <div className={`fixed ${(mobilemenu==true) ? 'opacity-100' : 'opacity-0'} inset-0 ease-in-out delay-1000 duration-500  bg-gray-500/75 transition-opacity`} aria-hidden="true"></div>
+        <div className={`fixed ${(mobilemenu == true) ? 'opacity-100' : 'opacity-0'} inset-0 ease-in-out delay-1000 duration-500  bg-gray-500/75 transition-opacity`} aria-hidden="true"></div>
 
         <div className="fixed inset-0 z-40 flex">
           {/* <!--
@@ -277,12 +277,15 @@ export default function Filterproductsidebar({ Categories,
                   <div className="space-y-4">
                     {
                       Categories.map((v, i) => {
-                        return (
-                          <div className="flex items-center" key={i}>
-                            <input name="categories" id={v.slug} onClick={() => cc(v.slug)} value="white" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-                            <label htmlFor={v.slug} className="ml-3 text-sm text-gray-600">{v.name}</label>
-                          </div>
-                        )
+                        if (v.slug != "motorcycle" && v.slug != "vehicle") {
+                          return (
+                            <div className="flex items-center" key={i}>
+                              <input name="categories" id={`category-${v.slug}`} onClick={() => cc(v.slug)} value="white" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                              <label htmlFor={`category-${v.slug}`} className="ml-3 text-sm text-gray-600">{v.name}</label>
+                            </div>
+                          )
+                        }
+
                       })
                     }
 
@@ -321,8 +324,8 @@ export default function Filterproductsidebar({ Categories,
                       brand.map((v, i) => {
                         return (
                           <div className="flex items-center" key={i}>
-                            <input onClick={() => b(v.slug)} id={v.slug} name="category[]" value="new-arrivals" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-                            <label htmlFor={v.slug} className="ml-3 text-sm text-gray-600">{v.slug}</label>
+                            <input onClick={() => b(v.slug)} id={`brand-${v.slug}`} name="category[]" value="new-arrivals" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                            <label htmlFor={`brand-${v.slug}`} className="ml-3 text-sm text-gray-600">{v.slug}</label>
                           </div>
                         )
                       })
@@ -471,7 +474,7 @@ export default function Filterproductsidebar({ Categories,
           </div>
         </div>
       </div>
-
+      {/* //----------------WEBSITE SIDE BAR ------------------------------------------------------------------->>>> */}
       <main className=" basis-[25%]  hidden laptop:block ">
 
 
@@ -574,16 +577,28 @@ export default function Filterproductsidebar({ Categories,
                 {/* <!-- Filter section, show/hide based on section state. --> */}
                 <div className={`pt-6 ${opencat ? 'hidden' : ''}`} id="filter-section-0">
                   <div className="space-y-4">
-                    {
-                      Categories.map((v, i) => {
+                    {Categories.map((v, i) => {
+                      if (v.slug !== "motorcycle" && v.slug !== "vehicle") {
                         return (
                           <div className="flex items-center" key={i}>
-                            <input name="categories" id={v.slug} onClick={() => cc(v.slug)} value="white" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-                            <label htmlFor={v.slug} className="ml-3 text-sm text-gray-600">{v.name}</label>
+                            <input
+                              name="categories"
+                              id={`category-${v.slug}`}  // Unique id
+                              onClick={() => cc(v.slug)}
+                              value={v.slug}
+                              type="checkbox"
+                              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                            />
+                            <label
+                              htmlFor={`category-${v.slug}`} // Should match input id
+                              className="ml-3 text-sm text-gray-600 cursor-pointer"
+                            >
+                              {v.name}
+                            </label>
                           </div>
-                        )
-                      })
-                    }
+                        );
+                      }
+                    })}
 
 
                   </div>
@@ -620,8 +635,8 @@ export default function Filterproductsidebar({ Categories,
                       brand.map((v, i) => {
                         return (
                           <div className="flex items-center" key={i}>
-                            <input onClick={() => b(v.slug)} id={v.slug} name="category[]" value="new-arrivals" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-                            <label htmlFor={v.slug} className="ml-3 text-sm text-gray-600">{v.slug}</label>
+                            <input onClick={() => b(v.slug)} id={`brand-${v.slug}`} name="category[]" value="new-arrivals" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                            <label htmlFor={`brand-${v.slug}`} className="ml-3 text-sm text-gray-600">{v.slug}</label>
                           </div>
                         )
                       })

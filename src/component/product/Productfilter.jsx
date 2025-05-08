@@ -8,9 +8,9 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 export default function Productfilter({ products, setclears, clear, mobilemenu, setmobilemenu, sort, totalpages, setSORT, pagecount, setpagecount }) {
   
   let { addtocart } = useContext(Commoncontext)
-  let openmenu = () => [
+  let openmenu = () => {
     setmobilemenu(true)
-  ]
+  }
   let next = () => {
     pagecount++;
     setpagecount(pagecount)
@@ -72,10 +72,13 @@ export default function Productfilter({ products, setclears, clear, mobilemenu, 
           <div className="flex justify-center laptop:gap-5 flex-wrap">
             {
               products.map((v, i) => {
-             
-                return (
-                  <Productcard v={v} addtocart={addtocart} key={i} />
-                )
+             if(v.category_slug !="vehicle" && v.category_slug !="motorcycle" ){
+              return (
+
+                <Productcard v={v} addtocart={addtocart} key={i} />
+              )
+             }
+               
               })
             }
 

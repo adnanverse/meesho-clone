@@ -10,11 +10,11 @@ import { Commoncontext } from "../context/Context.jsx";
 export default function Productcard({ v, addtocart }) {
   let { heart, wish, setheart, cartitems } = useContext(Commoncontext)
   var checkwishin = [];
-  
-  if(wish!=undefined){
-  checkwishin = wish.filter((items) => items.id == v.id)
+
+  if (wish != undefined) {
+    checkwishin = wish.filter((items) => items.id == v.id)
   }
-  
+
   return (
     <>
       <div className="laptop:w-[220px] smallmob:w-[50%] border largemob:mt-6 p-3 largemob:rounded-lg ">
@@ -23,24 +23,26 @@ export default function Productcard({ v, addtocart }) {
             <img className='rounded-t-lg' src={v.image} />
           </Link>
           {
-            (checkwishin=='')
+            (checkwishin == '')
               ?
-              <div className="absolute top-1 right-1 bg-[white] opacity-50 p-1 rounded-full text-[black]"> 
-              <IoIosHeartEmpty className={` `} onClick={() => setheart(v)} />
+              <div className="absolute top-1 right-1 bg-[white] opacity-50 p-1 rounded-full text-[black]">
+                <IoIosHeartEmpty className={` `} onClick={() => setheart(v)} />
               </div>
               :
-              <div className="absolute  top-1 right-1 bg-[white] p-1 rounded-full text-[red] "> 
-              <IoMdHeart className={``} onClick={() => setheart(v)} />
+              <div className="absolute  top-1 right-1 bg-[white] p-1 rounded-full text-[red] ">
+                <IoMdHeart className={``} onClick={() => setheart(v)} />
               </div>
           }
         </div>
-        <div className="overflow-hidden "><h5 className="text-[#8B8BA3] pt-1 largemob:text-[16px] text-[10px] font-medium">{v.name}</h5></div>
+        <div className="overflow-hidden h-7 w-full  ">
+          <h5 className="text-[#8B8BA3] pt-1 largemob:text-[16px] text-[10px] font-medium">{v.name}</h5>
+        </div>
         <div className="flex items-center ">
-          <p className='p-0  flex items-center m-0'><FaIndianRupeeSign className="largemob:text-[20px] text-[12px] " /> 
-          <span className="largemob:text-[24px] text-[15px] font-bold">
-            {v.price}
+          <p className='p-0  flex items-center m-0'><FaIndianRupeeSign className="largemob:text-[20px] text-[12px] " />
+            <span className="largemob:text-[24px] text-[15px] font-bold">
+              {v.price}
             </span>
-            </p>
+          </p>
           <div className="line-through largemob:text-[16px] text-[11px] flex items-center font-medium text-[#8B8BA3] px-2">
             {/* Discounted Price / (1 - (Discount Percentage / 100)) */}
             <FaIndianRupeeSign className="largemob:text-[14px] text-[9px] largemob:mt-1 line-through " />

@@ -11,72 +11,72 @@ import cashondelivery from '../../assets/images/cod_new.png'
 import returndel from '../../assets/images/return_new.png'
 import { useParams } from 'react-router-dom';
 export default function ProductView() {
-
+  let {addtocart}=useContext(Commoncontext)
   let [ProductViewData, setProductViewData] = useState([])
   let [imagess, setimages] = useState([])
-  let [reviews,setreviews]=useState()
+  let [reviews, setreviews] = useState()
   // let [imagemul,setimagemul]= useState([])
   let [products, setproducts] = useState([])
-  let [similarproduct, setsimilarproduct] = useState([])
   let [displayimg, setdisplayimg] = useState('')
 
   // --------------------------------------------------------------------------------------------------------------------------------------->>>
   const params = useParams()
   useEffect(() => {
+    setimages([]);
+    setdisplayimg('')
     axios.get(`https://wscubetech.co/ecommerce-api/productdetalis.php?id=${params.id}`)
       .then(function (response) {
         // handle succes
-       
+
         setProductViewData(response.data.product);
         setimages(response.data.product.multiple_images)
         setreviews(response.data.product.reviews)
+
+        axios.get(`https://wscubetech.co/ecommerce-api/products.php?limit=166`)
+
+          .then(function (productresponse) {
+
+            let allData = productresponse.data.data.filter((v, i) => {
+              
+              if (v.id == response.data.product.id) {
+                return v;
+              }
+            })
+          
+            let finaldata = productresponse.data.data.filter((v, i) => {
+              if (allData[0].category_id == v.category_id) {
+                return v;
+              }
+            })
+            setproducts(finaldata)
+
+
+          })
+          .catch(function (producterror) {
+            // handle error
+            console.log(producterror);
+          })
 
 
 
       })
       .catch(function (error) {
-        // handle error
-        // alert("error")
+
         console.log(error);
       })
-  }, [])
+  }, [params])
 
 
   let showimg = (e) => {
     setdisplayimg(e)
   }
-  useEffect(() => {
-    
-    axios.get(`https://wscubetech.co/ecommerce-api/products.php?limit=28`)
-
-      .then(function (response) {
-        setproducts(response.data.data);
-
-        // settotalpages(response.data.toal_pages)
-
-        // setLoader(false)
-
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-
-  }, [])
-  useEffect(()=>{
-    let allData= products.filter((v,i)=>{
-      let vcat= v.category_name.trim();
-     if(vcat==ProductViewData.category.trim()){
-      return v;
-     } 
-    })
-    setsimilarproduct(allData)
-
-  },[])
 
 
-  
-  
+
+
+
+
+
   return (
     <>
       <div className='w-[100%]'>
@@ -96,19 +96,23 @@ export default function ProductView() {
             </div>
             <div className='tablet:basis-[86%]  basis-[100%] '>
               <div className='border flex items-center justify-center rounded-md '>
-                <img className='largemob:h-[472px]' src={(displayimg == '') ? ProductViewData.image : displayimg} alt="" />
+                <img className='largemob:h-[472px]' src={
+                  // ProductViewData.image ? ProductViewData.image : displayimg
+                  (displayimg == '') ? ProductViewData.image : displayimg
+                  } 
+                  alt="" />
               </div>
               <div className='flex  justify-evenly largemob:hidden'>
-              {
-                imagess.map((v, i) => {
-                  return (
-                    <div className={`w-[56px] flex items-center mt-3 rounded h-[60px] ${(v == displayimg) ? 'border-[1px] border-[#C53EAD]' : ''}`} key={i}>
+                {
+                  imagess.map((v, i) => {
+                    return (
+                      <div className={`w-[56px] flex items-center mt-3 rounded h-[60px] ${(v == displayimg) ? 'border-[1px] border-[#C53EAD]' : ''}`} key={i}>
 
-                      <img src={v} height='100%' onClick={() => showimg(v)} alt="" />
-                    </div>
-                  )
-                })
-              }
+                        <img src={v} height='100%' onClick={() => showimg(v)} alt="" />
+                      </div>
+                    )
+                  })
+                }
 
               </div>
               <div className='border-b-[1px] border-[gray] py-8 flex justify-evenly'>
@@ -215,36 +219,36 @@ export default function ProductView() {
 
             </div>
             <div className='mt-5 py-[8px] px-[10px] flex bg-[#E7EEFF] rounded-md border '>
-                <div className='flex-grow-[1]'>
-                  <div className='bg-white w-10 rounded-full  py-1  mx-auto'><img src={lowestprice} width='40px' alt="" />
-                  </div>
-                  <p className='text-[12px] font-semibold text-center'>Lowest Price</p>
-
-
+              <div className='flex-grow-[1]'>
+                <div className='bg-white w-10 rounded-full  py-1  mx-auto'><img src={lowestprice} width='40px' alt="" />
                 </div>
-                <div className='flex-grow-[1]'>
+                <p className='text-[12px] font-semibold text-center'>Lowest Price</p>
+
+
+              </div>
+              <div className='flex-grow-[1]'>
                 <div className='bg-white w-10 rounded-full  py-1  mx-auto'><img src={cashondelivery} width='40px' alt="" /></div>
                 <p className='text-[12px] font-semibold text-center'>Cash on Delivery</p>
-                  
-                </div>
-                <div className='flex-grow-[1]'>
+
+              </div>
+              <div className='flex-grow-[1]'>
                 <div className='bg-white w-10 rounded-full py-1 mx-auto'><img src={returndel} width='40px' alt="" /></div>
                 <p className='text-[12px] font-semibold text-center'>7-day Returns</p>
-                  
-                </div>
+
+              </div>
             </div>
             <div className='mt-5 py-[8px] px-[10px]  bg-[white] rounded-md border '>
-                  <p>
-                  Product Ratings & Reviews
-                  </p>
-                 {
+              <p>
+                Product Ratings & Reviews
+              </p>
+              {
 
-                  // reviews.map((v,i)=>{
-                  //   return (
-                  //     <div>{v}</div>
-                  //   )
-                  // })
-                 }
+                // reviews.map((v,i)=>{
+                //   return (
+                //     <div>{v}</div>
+                //   )
+                // })
+              }
 
             </div>
 
@@ -258,9 +262,9 @@ export default function ProductView() {
         <div className='max-w-[1330px] tablet:justify-normal justify-center flex gap-5 flex-wrap  py-3 mx-auto'>
 
           {
-            similarproduct.map((v, i) => {
+            products.map((v, i) => {
               return (
-                <Productcard v={v} key={i}/>
+                <Productcard v={v} addtocart={addtocart} key={i} />
               )
             })
           }
